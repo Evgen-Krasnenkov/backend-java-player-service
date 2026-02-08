@@ -1,4 +1,35 @@
 GET http://localhost:8080/v1/players/allenga01
 Accept: application/json
 
+### Model chat
+POST http://localhost:8080/v1/chat
+Accept: application/json
+Content-Type: application/json
+
+{
+  "model": "tinyllama",
+  "prompt": "How many tokens do you have?"
+}
+
 ###
+POST http://localhost:8080/v1/chat
+Accept: application/json
+Content-Type: application/json
+
+{
+  "prompt": "Hello!",
+  "model": "openai"
+}
+
+
+###
+GET http://localhost:8080/v1/chat/list-models
+
+
+
+###
+POST http://localhost:11434/api/generate
+Content-Type: application/json
+
+{"model": "tinyllama","prompt": "why is the sky blue?", "stream": false}
+
