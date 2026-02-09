@@ -8,7 +8,6 @@ import com.app.playerservicejava.model.PlayerView;
 import com.app.playerservicejava.model.Players;
 import com.app.playerservicejava.service.PayerViewFactory;
 import com.app.playerservicejava.service.PlayerService;
-import com.app.playerservicejava.service.PlayerViewStrategy;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
