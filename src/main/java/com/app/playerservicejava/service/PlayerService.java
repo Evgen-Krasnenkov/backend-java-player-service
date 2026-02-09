@@ -1,23 +1,27 @@
 package com.app.playerservicejava.service;
 
+import com.app.playerservicejava.dto.PlayerDto;
+import com.app.playerservicejava.mapper.PlayerMapper;
 import com.app.playerservicejava.model.Player;
 import com.app.playerservicejava.model.Players;
 import com.app.playerservicejava.repository.PlayerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PlayerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerService.class);
 
-    @Autowired
-    private PlayerRepository playerRepository;
+    public PlayerService(PlayerMapper mapper, PlayerRepository playerRepository) {
+        this.mapper = mapper;
+        this.playerRepository = playerRepository;
+    }
+
+    private final PlayerMapper mapper;
+    private final PlayerRepository playerRepository;
 
     public Players getPlayers() {
         Players players = new Players();
@@ -40,4 +44,19 @@ public class PlayerService {
         return player;
     }
 
+    public Player savePlayer(Player player) {
+        return playerRepository.save(player);
+    }
+
+    public Optional<Player> update(String id, PlayerDto playerDto) {
+        Optional<Player> player = playerRepository.findById(id);
+        return player.map(item -> {
+            mapper.dtoToEntity(playerDto, item);
+            return playerRepository.save(item);
+        });
+    }
+
+    public void delete(String id) {
+        playerRepository.deleteById(id);
+    }
 }

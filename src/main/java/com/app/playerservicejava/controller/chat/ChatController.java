@@ -37,8 +37,8 @@ public class ChatController {
 
     @PostMapping(value = "/chat", produces = { MediaType.APPLICATION_JSON_VALUE })
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public String chat(@RequestBody ChatDto chatDto) throws OllamaBaseException, IOException, InterruptedException {
-        return chatClientService.chat(chatDto);
+    public ResponseEntity<String> chat(@RequestBody ChatDto chatDto) throws OllamaBaseException, IOException, InterruptedException {
+        return ResponseEntity.ok(chatClientService.chat(chatDto));
     }
 
     @GetMapping("/list-models")

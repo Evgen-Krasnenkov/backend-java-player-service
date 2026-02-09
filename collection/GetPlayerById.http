@@ -1,5 +1,46 @@
-GET http://localhost:8080/v1/players/allenga01
+GET http://localhost:8080/v1/players/allenga01?isAdmin=true
 Accept: application/json
+
+###
+GET http://localhost:8080/v1/players
+Accept: application/json
+
+###
+GET http://localhost:8080/v1/players/aardsda01
+Accept: application/json
+
+###
+POST http://localhost:8080/v1/players
+Accept: application/json
+Content-Type: application/json
+
+{
+  "playerId": "allenga01",
+  "firstName": "GaryNew",
+  "lastName": "AllensonNew",
+  "birthYear": 1890,
+  "birthMonth": 1,
+  "birthDay": 26
+}
+
+###
+PUT http://localhost:8080/v1/players/allenga01
+Accept: application/json
+Content-Type: application/json
+
+###
+DELETE http://localhost:8080/v1/players/allenga01
+Accept: application/json
+Content-Type: application/json
+
+{
+  "playerId": "allenga01",
+  "firstName": "GaryNew",
+  "lastName": "AllensonNew",
+  "birthYear": 1890,
+  "birthMonth": 1,
+  "birthDay": 26
+}
 
 ### Model chat
 POST http://localhost:8080/v1/chat
@@ -8,7 +49,7 @@ Content-Type: application/json
 
 {
   "model": "tinyllama",
-  "prompt": "How many tokens do you have?"
+  "prompt": "I have a restcontroller with GetMapping. How can it respond with 405 on any other methods than GET"
 }
 
 ###
